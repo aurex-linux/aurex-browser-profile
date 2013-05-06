@@ -1,0 +1,72 @@
+#!/bin/sh
+# -------
+# File:        aurex-browser-profile
+# Description: manage browser profiles
+# Author:      Luis Antonio Garcia Gisbert <luisgg@gmail.com> 
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along 
+# with this program; if not, write to the Free Software Foundation, Inc., 
+# 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
+# --------
+
+# funcs
+# -----
+
+die(){
+	echo "$1" >&2
+	exit 1
+}
+
+usage(){
+	die "Usage: $(basename "$0")  {firefox|chromium|all} {init|get-cert-db}"
+}
+
+case "$1" in
+	firefox|chromium)
+		BROWSER_LIST="$1"
+		;;
+	all)
+		BROWSER_LIST="firefox chromium"
+		;;
+	*)
+		usage
+		;;
+esac
+
+
+
+for b in $BROWSER_LIST ; do
+	. /usr/share/aurex-browser-profile/$b.cfg
+	case "$2" in
+		init)
+			if [ ! -d "$HOME/$BR_REL_DIR" ] ; then
+				tar -C "$HOME" -vzf $BR_TARBALL
+				if [ "$BR_INIT_SCRIPT" ] && [ -x "$BR_INIT_SCRIPT" ] ; then
+					$BR_INIT_SCRIPT || true
+				fi
+			fi
+		;;
+		get-cert-db)
+			if [ -d "$HOME/$BR_REL_DIR" ] ; then
+				find "$HOME/$BR_REL_DIR" -name "$BR_CERT_DB"
+			fi
+		;;
+			
+		*)
+			usage
+		;;
+	esac
+done
+
+
+exit 0

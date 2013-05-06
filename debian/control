@@ -1,0 +1,14 @@
+Source: aurex-browser-profile
+Section: misc
+Priority: optional
+Maintainer: Luis Antonio Garcia Gisbert <luisgg@gmail.com>
+Build-Depends: debhelper ( >= 7 )
+Homepage: https://github.com/luisgg
+Standards-Version: 3.9.3
+
+Package: aurex-browser-profile
+Architecture: all
+Depends: ${misc:Depends}
+Description: default aurex browsers proofile
+ Provides a default user profile for the web browsers used in aurex
+

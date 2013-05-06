@@ -1,0 +1,5 @@
+#!/bin/sh
+PROFILE_FILE="$HOME/.pki/nssdb/pkcs11.txt"
+[ -r "$PROFILE_FILE] || exit 0
+sed -i -e "s%_@_HOME_@_%$HOME%g" $PROFILE_FILE
+exit 0
