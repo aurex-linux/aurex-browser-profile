@@ -50,7 +50,7 @@ for b in $BROWSER_LIST ; do
 	case "$2" in
 		init)
 			if [ ! -d "$HOME/$BR_REL_DIR" ] ; then
-				tar -C "$HOME" -vzf $BR_TARBALL
+				tar -C "$HOME" -xzf $BR_TARBALL
 				if [ "$BR_INIT_SCRIPT" ] && [ -x "$BR_INIT_SCRIPT" ] ; then
 					$BR_INIT_SCRIPT || true
 				fi

@@ -1,3 +1,9 @@
+aurex-browser-profile (0.2) precise; urgency=low
+
+  * Fixed tar options in "profile init"
+
+ -- Luis Antonio Garcia Gisbert <luisgg@gmail.com>  Wed, 15 May 2013 17:26:19 +0200
+
 aurex-browser-profile (0.1) precise; urgency=low
 
   * Initial release.
