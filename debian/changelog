@@ -1,3 +1,9 @@
+aurex-browser-profile (0.3) trusty; urgency=medium
+
+  * Rebuild for aurex 14.04 trusty
+
+ -- Luis Antonio Garcia Gisbert <luisgg@gmail.com>  Fri, 29 Aug 2014 17:58:34 +0200
+
 aurex-browser-profile (0.2) precise; urgency=low
 
   * Fixed tar options in "profile init"
